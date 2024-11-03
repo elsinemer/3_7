@@ -1,0 +1,22 @@
+import numpy as np
+
+# Desafío 1: Cálculo de (2A + B^T)
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+resultado1 = 2 * A + B.T
+print("Resultado de 2A + B^T:")
+print(resultado1)
+
+# Desafío 2: Traza de la inversa de A
+A2 = np.array([[1, 0, 1], [4, -1, 4], [5, 6, 7]])
+inversa_A2 = np.linalg.inv(A2)
+traza_inversa = np.trace(inversa_A2)
+print("\nTraza de la inversa de A:")
+print(traza_inversa)
+
+# Desafío 3: Rango de (A + A^T)
+A3 = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+suma_A3 = A3 + A3.T
+rango_suma = np.linalg.matrix_rank(suma_A3)
+print("\nRango de (A + A^T):")
+print(rango_suma)
