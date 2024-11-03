@@ -1,0 +1,8 @@
+#Creo un lista que va a almacenar los códigos de los libros de una biblioteca.
+Lista_libros=[2654,3658,2145,5698,2147,9854,2578,3658,2145,5698,2147,9854,2578,3658,2145]
+#Imprimo la lista original
+print(f"los libros disponibles son: {Lista_libros}")
+#creo una nueva lista que va a almacenar códigos de los libros ordenados.
+Lista_libros_ordenados=sorted(Lista_libros,reverse=True)
+#Imprimo la lista ordenada.
+print(f"los libros ordenados por su código son: {Lista_libros_ordenados}")
