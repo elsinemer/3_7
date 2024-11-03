@@ -1,0 +1,13 @@
+# Pedir al usuario que ingrese los números separados por comas
+numeros = input("Ingrese una lista de números separados por comas: ").split(',')
+
+# Convertir los números a una lista de enteros
+numeros = [int(num) for num in numeros]
+
+# Mostrar los caracteres ASCII correspondientes
+print("Caracteres ASCII correspondientes:")
+for num in numeros:
+    if 0 <= num <= 127:  # Verificar que el número esté en el rango válido de ASCII
+        print(f"Número {num}: {chr(num)}")
+    else:
+        print(f"Número {num}: fuera del rango ASCII válido (0-127)")
