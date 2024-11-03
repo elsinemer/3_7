@@ -1,0 +1,34 @@
+# Control de Notas de Estudiantes
+
+# Pedir al usuario que ingrese las notas separadas por comas
+notas = input("Ingrese las notas de los estudiantes separadas por comas: ").split(',')
+
+# Convertir las notas a una lista de enteros
+notas = [int(nota) for nota in notas]
+
+# Pregunta 1: Calcular el promedio de las notas de la clase
+promedio = sum(notas) / len(notas)
+print(f"El promedio de las notas de la clase es: {promedio:.2f}")
+
+# Pregunta 2: Encontrar la nota más baja y la más alta
+nota_minima = min(notas)
+nota_maxima = max(notas)
+print(f"La nota más baja es: {nota_minima}")
+print(f"La nota más alta es: {nota_maxima}")
+
+# Pregunta 3: Identificar la nota que más se repite
+frecuencias = {}
+for nota in notas:
+    if nota in frecuencias:
+        frecuencias[nota] += 1
+    else:
+        frecuencias[nota] = 1
+
+nota_mas_repetida = max(frecuencias, key=frecuencias.get)
+frecuencia = frecuencias[nota_mas_repetida]
+print(f"La nota que más se repite es: {nota_mas_repetida} (se repite {frecuencia} veces)")
+
+# Pregunta 4 (Plus): Realizar un gráfico de barras con las notas
+print("Distribución de las notas:")
+for nota, conteo in frecuencias.items():
+    print(f"Nota {nota}: {'*' * conteo}")
