@@ -1,0 +1,7 @@
+#Declaro la lista inventatario e ingreso los elementos que la componen
+inventario= ["manzanaz", "bananas", "zanahoras", "espinacas", "brocoli", "cebolla", "kiwis"]
+#Utilizo la funcion len para saber la cantidad de elementos que tiene la lista
+cantidad= len(inventario)
+print(f"Son {cantidad} la cantidad de elementos que tiene la verdurería")
+#Utilizo la función con el nombre de la lista y la posición del elemento que quiero saber en este caso inventario[2] ya que quiero saber el tercer elemento pero en phyton se cuenta desde 0
+print(f"el tercer producto que tenemos a disposición es {inventario[2]}")
