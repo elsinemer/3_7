@@ -1,0 +1,55 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import time
+
+# Función para crear un tablero de juego de dimensiones n x m con un patrón inicial
+def crear_tablero(n, m):
+    tablero = np.random.choice([0, 1], size=(n, m), p=[0.7, 0.3])  # Inicialización aleatoria
+    return tablero
+
+# Función para contar los vecinos vivos de una celda
+def contar_vecinos_vivos(tablero, x, y):
+    n, m = tablero.shape
+    vecinos_vivos = 0
+    for i in range(-1, 2):
+        for j in range(-1, 2):
+            if not (i == 0 and j == 0):  # No contar la propia celda
+                xi = (x + i) % n
+                yj = (y + j) % m
+                vecinos_vivos += tablero[xi, yj]
+    return vecinos_vivos
+
+# Función para actualizar el tablero según las reglas del juego
+def actualizar_tablero(tablero):
+    n, m = tablero.shape
+    nuevo_tablero = tablero.copy()
+    for x in range(n):
+        for y in range(m):
+            vecinos_vivos = contar_vecinos_vivos(tablero, x, y)
+            if tablero[x, y] == 1:
+                if vecinos_vivos < 2 or vecinos_vivos > 3:
+                    nuevo_tablero[x, y] = 0  # Muere por subpoblación o sobrepoblación
+            else:
+                if vecinos_vivos == 3:
+                    nuevo_tablero[x, y] = 1  # Nace por reproducción
+    return nuevo_tablero
+
+# Función para visualizar la simulación con Matplotlib
+def simular_vida(tablero, iteraciones):
+    plt.ion()
+    for i in range(iteraciones):
+        plt.imshow(tablero, cmap='binary')
+        plt.title(f"Iteración {i + 1}")
+        plt.draw()
+        plt.pause(0.5)
+        tablero = actualizar_tablero(tablero)
+        plt.clf()
+    plt.ioff()
+    plt.show()
+
+# Dimensiones del tablero
+n, m = 10, 10  # Puedes cambiar el tamaño del tablero
+
+# Crear el tablero inicial y simular la evolución
+tablero = crear_tablero(n, m)
+simular_vida(tablero, 20)  # Simula 20 iteraciones
